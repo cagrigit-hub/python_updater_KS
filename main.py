@@ -1,14 +1,14 @@
 import requests
 import time
 def python_updater():
-    url_for_playlist = "https://v1.nocodeapi.com/cagriexmp/yt/DFRgrpHFNFWUTKrm/playlistItems?playlistId=PLL17CfultyWGsHNjv06VkwdwZUhNe6gAV"
+    url_for_playlist = "https://v1.nocodeapi.com/xxxxxxxxxxxxxxxxxxxxx/yt/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     params = {}
     r = requests.get(url = url_for_playlist, params = params)
     result_playlist = r.json()
 
 
     for i in range(len(result_playlist["items"])):
-        video_url = "https://v1.nocodeapi.com/cagriexmp/yt/DFRgrpHFNFWUTKrm/videos?id=" + \
+        video_url = "https://v1.nocodeapi.com/xxxxxxxxxxxxxxxxxp/yt/xxxxxxxxxxxxxxxx/videos?id=" + \
                     result_playlist["items"][i]["snippet"]["resourceId"]["videoId"]
         params2 = {}
         r2 = requests.get(url=video_url, params=params2)
@@ -17,13 +17,13 @@ def python_updater():
         date = result_playlist["items"][i]["snippet"]["publishedAt"][0:10]
         view = result_video["items"][0]["statistics"]["viewCount"]
 
-        url_search = f"https://v1.nocodeapi.com/cagriexmp/google_sheets/IwZfRjWuieGmbGwf/search?tabId=Sheet2&searchKey=VIDEO&searchValue={title}"
+        url_search = f"https://v1.nocodeapi.com/xxxxxxxxxxxxxxxxx/google_sheets/xxxxxxxxxxxxxx/search?tabId=Sheet2&searchKey=VIDEO&searchValue={title}"
         params_search = {}
         r_search = requests.get(url=url_search, params=params_search)
         result_search = r_search.json()
 
         if result_search == []:
-            url_sheet = "https://v1.nocodeapi.com/cagriexmp/google_sheets/IwZfRjWuieGmbGwf?tabId=Sheet2"
+            url_sheet = "https://v1.nocodeapi.com/xxxxxxxxxxxxxxx/google_sheets/xxxxxxxxxxxxxxxxxx?tabId=Sheet2"
             params_Sheet = {}
             data_sheet = [[
                 title,
@@ -38,7 +38,7 @@ def python_updater():
             print(title + " başarıyla eklendi!")
 
         else:
-            url_update = "https://v1.nocodeapi.com/cagriexmp/google_sheets/IwZfRjWuieGmbGwf"
+            url_update = "https://v1.nocodeapi.com/xxxxxxxxxxxxxx/google_sheets/xxxxxxxxxxxxxxx"
             params_update = {"tabId": "Sheet2"}
             data = {"row_id": i+2, "IZLENME SAYISI": view}
             r_update = requests.put(url=url_update, params=params_update, json=data)
